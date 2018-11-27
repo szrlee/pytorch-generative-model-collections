@@ -72,9 +72,17 @@ def print_network(net):
         num_params += param.numel()
     print(net)
     print('Total number of parameters: %d' % num_params)
+    
+def show_images(images, size):
+    return imshow(images, size)
 
 def save_images(images, size, image_path):
     return imsave(images, size, image_path)
+
+def imshow(images, size):
+    image = np.squeeze(merge(images, size))
+    plt.imshow(image, 'gray')
+    plt.show()
 
 def imsave(images, size, path):
     image = np.squeeze(merge(images, size))
@@ -105,7 +113,7 @@ def generate_animation(path, num):
     for e in range(num):
         img_name = path + '_epoch%03d' % (e+1) + '.png'
         images.append(imageio.imread(img_name))
-    imageio.mimsave(path + '_generate_animation.gif', images, fps=5)
+    imageio.mimsave(path + '_generate_animation.gif', images, fps=2)
 
 def loss_plot(hist, path = 'Train_hist.png', model_name = ''):
     x = range(len(hist['D_loss']))

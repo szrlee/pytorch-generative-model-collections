@@ -6,26 +6,26 @@ def dataloader(dataset, input_size, batch_size, split='train'):
     if dataset == 'mnist':
         data_loader = DataLoader(
             datasets.MNIST('data/mnist', train=True, download=True, transform=transform),
-            batch_size=batch_size, shuffle=True)
+            batch_size=batch_size, shuffle=True, drop_last=True)
     elif dataset == 'fashion-mnist':
         data_loader = DataLoader(
             datasets.FashionMNIST('data/fashion-mnist', train=True, download=True, transform=transform),
-            batch_size=batch_size, shuffle=True)
+            batch_size=batch_size, shuffle=True, drop_last=True)
     elif dataset == 'cifar10':
         data_loader = DataLoader(
             datasets.CIFAR10('data/cifar10', train=True, download=True, transform=transform),
-            batch_size=batch_size, shuffle=True)
+            batch_size=batch_size, shuffle=True, drop_last=True)
     elif dataset == 'svhn':
         data_loader = DataLoader(
             datasets.SVHN('data/svhn', split=split, download=True, transform=transform),
-            batch_size=batch_size, shuffle=True)
+            batch_size=batch_size, shuffle=True, drop_last=True)
     elif dataset == 'stl10':
         data_loader = DataLoader(
             datasets.STL10('data/stl10', split=split, download=True, transform=transform),
-            batch_size=batch_size, shuffle=True)
+            batch_size=batch_size, shuffle=True, drop_last=True)
     elif dataset == 'lsun-bed':
         data_loader = DataLoader(
             datasets.LSUN('data/lsun', classes=['bedroom_train'], transform=transform),
-            batch_size=batch_size, shuffle=True)
+            batch_size=batch_size, shuffle=True, drop_last=True)
 
     return data_loader
